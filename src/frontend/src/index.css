@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "Plus Jakarta Sans";
+    --font-mono: monospace;
+    --radius: 0.625rem;
+
+    --background: 0.98 0.01 80;
+    --foreground: 0.15 0.02 270;
+    --card: 1.0 0 0;
+    --card-foreground: 0.15 0.02 270;
+    --popover: 1.0 0 0;
+    --popover-foreground: 0.15 0.02 270;
+
+    --primary: 0.62 0.22 65;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.2 0.03 270;
+    --secondary-foreground: 0.95 0 0;
+    --muted: 0.92 0.01 270;
+    --muted-foreground: 0.45 0.01 270;
+
+    --accent: 0.62 0.22 65;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.02 270;
+    --input: 0.92 0.01 270;
+    --ring: 0.62 0.22 65;
+
+    --chart-1: 0.62 0.22 65;
+    --chart-2: 0.6 0.2 270;
+    --chart-3: 0.55 0.18 350;
+    --chart-4: 0.7 0.15 25;
+    --chart-5: 0.45 0.15 200;
+
+    --sidebar: 0.98 0 0;
+    --sidebar-foreground: 0.15 0.02 270;
+    --sidebar-primary: 0.62 0.22 65;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.92 0.01 270;
+    --sidebar-accent-foreground: 0.2 0.03 270;
+    --sidebar-border: 0.88 0.02 270;
+    --sidebar-ring: 0.62 0.22 65;
+
+    --color-primary: oklch(0.45 0.18 240);
+    --color-primary-light: oklch(0.65 0.15 240);
+    --color-primary-dark: oklch(0.3 0.18 240);
+    --color-accent: oklch(0.62 0.22 65);
+    --color-accent-dark: oklch(0.5 0.18 65);
+  }
+
+  .dark {
+    --background: 0.12 0.03 270;
+    --foreground: 0.95 0.01 270;
+    --card: 0.16 0.03 270;
+    --card-foreground: 0.95 0.01 270;
+    --popover: 0.2 0.03 270;
+    --popover-foreground: 0.95 0.01 270;
+
+    --primary: 0.72 0.22 65;
+    --primary-foreground: 0.12 0.03 270;
+
+    --secondary: 0.25 0.03 270;
+    --secondary-foreground: 0.88 0.01 270;
+    --muted: 0.25 0.03 270;
+    --muted-foreground: 0.58 0.01 270;
+
+    --accent: 0.72 0.22 65;
+    --accent-foreground: 0.12 0.03 270;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.95 0.01 270;
+
+    --border: 0.28 0.03 270;
+    --input: 0.28 0.03 270;
+    --ring: 0.72 0.22 65;
+
+    --chart-1: 0.72 0.22 65;
+    --chart-2: 0.68 0.2 270;
+    --chart-3: 0.65 0.18 350;
+    --chart-4: 0.8 0.15 25;
+    --chart-5: 0.55 0.15 200;
+
+    --sidebar: 0.16 0.03 270;
+    --sidebar-foreground: 0.95 0.01 270;
+    --sidebar-primary: 0.72 0.22 65;
+    --sidebar-primary-foreground: 0.12 0.03 270;
+    --sidebar-accent: 0.25 0.03 270;
+    --sidebar-accent-foreground: 0.88 0.01 270;
+    --sidebar-border: 0.28 0.03 270;
+    --sidebar-ring: 0.72 0.22 65;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko50qCONfnbcJSaE9BiA3DQT3FXuCJj.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)),
+      oklch(var(--primary) / 0.7)
+    );
+  }
+
+  .shadow-premium {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+}

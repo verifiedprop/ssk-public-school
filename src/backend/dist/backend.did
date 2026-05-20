@@ -1,0 +1,614 @@
+type UserProfile = 
+ record {
+   createdAt: Timestamp;
+   name: text;
+   "principal": principal;
+   role: Role;
+ };
+type TransactionType = 
+ variant {
+   Expense;
+   Income;
+ };
+type TransactionInput = 
+ record {
+   amount: nat;
+   date: text;
+   description: text;
+   expenseCategory: opt ExpenseCategory;
+   incomeCategory: opt IncomeCategory;
+   reference: opt text;
+   txType: TransactionType;
+ };
+type Transaction = 
+ record {
+   amount: nat;
+   createdAt: Timestamp;
+   date: text;
+   description: text;
+   expenseCategory: opt ExpenseCategory;
+   id: text;
+   incomeCategory: opt IncomeCategory;
+   reference: opt text;
+   txType: TransactionType;
+ };
+type Timestamp = int;
+type TestStatus = 
+ variant {
+   Closed;
+   Draft;
+   Published;
+ };
+type TestAttemptInput = 
+ record {
+   answers: vec record {
+                  text;
+                  text;
+                };
+   testId: text;
+   timeTaken: nat;
+ };
+type TestAttempt = 
+ record {
+   answers: vec record {
+                  text;
+                  text;
+                };
+   className: text;
+   id: text;
+   marksObtained: float64;
+   passed: bool;
+   percentage: float64;
+   studentId: text;
+   studentName: text;
+   submittedAt: Timestamp;
+   testId: text;
+   timeTaken: nat;
+ };
+type TeacherRecord = 
+ record {
+   baseSalary: nat;
+   createdAt: Timestamp;
+   dateOfJoining: text;
+   designation: text;
+   id: text;
+   isActive: bool;
+   name: text;
+ };
+type TeacherInput = 
+ record {
+   baseSalary: nat;
+   dateOfJoining: text;
+   designation: text;
+   name: text;
+ };
+type SubjectMark = 
+ record {
+   marksObtained: nat;
+   subject: text;
+   totalMarks: nat;
+ };
+type StudentInput = 
+ record {
+   address: text;
+   admissionDate: Timestamp;
+   className: text;
+   dateOfBirth: text;
+   isActive: bool;
+   name: text;
+   parentEmail: text;
+   parentName: text;
+   parentPhone: text;
+   photoUrl: text;
+   rollNumber: text;
+   section: text;
+ };
+type StudentId = nat;
+type StudentCard = 
+ record {
+   academicYear: text;
+   admissionYear: text;
+   className: text;
+   dateOfBirth: text;
+   name: text;
+   parentName: text;
+   parentPhone: text;
+   photoUrl: text;
+   rollNumber: text;
+   schoolAddress: text;
+   schoolName: text;
+   section: text;
+   studentId: text;
+ };
+type Student = 
+ record {
+   address: text;
+   admissionDate: Timestamp;
+   className: text;
+   createdAt: Timestamp;
+   dateOfBirth: text;
+   id: StudentId;
+   isActive: bool;
+   name: text;
+   parentEmail: text;
+   parentName: text;
+   parentPhone: text;
+   photoUrl: text;
+   rollNumber: text;
+   section: text;
+   updatedAt: Timestamp;
+ };
+type SalaryStatus = 
+ variant {
+   Paid;
+   Pending;
+ };
+type SalaryRecord = 
+ record {
+   attendanceBonus: nat;
+   bankDetails: opt text;
+   baseSalary: nat;
+   createdAt: Timestamp;
+   deductions: nat;
+   id: text;
+   month: text;
+   netSalary: nat;
+   paidDate: opt text;
+   status: SalaryStatus;
+   teacherId: text;
+   teacherName: text;
+   year: nat;
+ };
+type SalaryInput = 
+ record {
+   attendancePercentage: float64;
+   bankDetails: opt text;
+   bonusAmount: nat;
+   deductionAmount: nat;
+   month: text;
+   teacherId: text;
+   year: nat;
+ };
+type Role = 
+ variant {
+   Accountant;
+   AdmissionCounsellor;
+   Parent;
+   Principal;
+   Student;
+   SuperAdmin;
+   Teacher;
+ };
+type QuestionOption = 
+ record {
+   id: text;
+   "text": text;
+ };
+type QuestionInput = 
+ record {
+   correctOptionId: text;
+   difficulty: Difficulty;
+   marks: nat;
+   negativeMarking: bool;
+   negativePenalty: float64;
+   options: vec QuestionOption;
+   "text": text;
+ };
+type Question = 
+ record {
+   correctOptionId: text;
+   difficulty: Difficulty;
+   id: text;
+   marks: nat;
+   negativeMarking: bool;
+   negativePenalty: float64;
+   options: vec QuestionOption;
+   "text": text;
+ };
+type QRSession = 
+ record {
+   active: bool;
+   classId: text;
+   date: text;
+   expiresAt: int;
+   token: text;
+ };
+type MonthlyReport = 
+ record {
+   month: text;
+   profit: int;
+   totalExpenses: nat;
+   totalIncome: nat;
+   year: nat;
+ };
+type MockTestInput = 
+ record {
+   className: text;
+   durationMinutes: nat;
+   negativeMarkingEnabled: bool;
+   passingPercentage: float64;
+   subject: text;
+   title: text;
+   totalMarks: nat;
+ };
+type MockTest = 
+ record {
+   className: text;
+   createdAt: Timestamp;
+   durationMinutes: nat;
+   id: text;
+   negativeMarkingEnabled: bool;
+   passingPercentage: float64;
+   questionIds: vec text;
+   status: TestStatus;
+   subject: text;
+   title: text;
+   totalMarks: nat;
+ };
+type LeadStatus = 
+ variant {
+   Contacted;
+   Converted;
+   FollowUp;
+   New;
+   Rejected;
+ };
+type LeadInput = 
+ record {
+   assignedCounsellor: opt principal;
+   classInterested: text;
+   email: text;
+   message: text;
+   name: text;
+   notes: text;
+   phone: text;
+   status: LeadStatus;
+ };
+type LeadId = nat;
+type LeadExportRow = 
+ record {
+   assignedCounsellor: text;
+   classInterested: text;
+   createdAt: Timestamp;
+   email: text;
+   id: LeadId;
+   message: text;
+   name: text;
+   notes: text;
+   phone: text;
+   status: text;
+   updatedAt: Timestamp;
+ };
+type Lead = 
+ record {
+   assignedCounsellor: opt principal;
+   classInterested: text;
+   createdAt: Timestamp;
+   email: text;
+   id: LeadId;
+   message: text;
+   name: text;
+   notes: text;
+   phone: text;
+   status: LeadStatus;
+   updatedAt: Timestamp;
+ };
+type IncomeCategory = 
+ variant {
+   AdmissionFee;
+   OtherFee;
+   TransportFee;
+   TuitionFee;
+ };
+type Grade = 
+ variant {
+   A;
+   APlus;
+   APlusPlus;
+   B;
+   BPlus;
+   C;
+   CPlus;
+   D;
+   F;
+ };
+type FeeStatus = 
+ variant {
+   Late;
+   Paid;
+   PartiallyPaid;
+   Pending;
+ };
+type FeePaymentInput = 
+ record {
+   amount: nat;
+   className: text;
+   discount: nat;
+   installmentNo: opt nat;
+   studentId: text;
+   studentName: text;
+   totalInstallments: opt nat;
+ };
+type FeePayment = 
+ record {
+   amount: nat;
+   className: text;
+   createdAt: Timestamp;
+   discount: nat;
+   fine: nat;
+   id: text;
+   installmentNo: opt nat;
+   netAmount: nat;
+   paidDate: opt text;
+   receiptNo: text;
+   status: FeeStatus;
+   studentId: text;
+   studentName: text;
+   totalInstallments: opt nat;
+ };
+type ExpenseCategory = 
+ variant {
+   Maintenance;
+   Miscellaneous;
+   Salary;
+   Transport;
+   Utilities;
+ };
+type ExamResultInput = 
+ record {
+   className: text;
+   examName: text;
+   studentId: text;
+   studentName: text;
+   subjects: vec SubjectMark;
+ };
+type ExamResult = 
+ record {
+   className: text;
+   createdAt: Timestamp;
+   examName: text;
+   grade: Grade;
+   id: text;
+   percentage: float64;
+   studentId: text;
+   studentName: text;
+   subjects: vec SubjectMark;
+   totalMaximum: nat;
+   totalObtained: nat;
+ };
+type Difficulty = 
+ variant {
+   Easy;
+   Hard;
+   Medium;
+ };
+type DashboardStats = 
+ record {
+   activeStudents: nat;
+   contactedLeads: nat;
+   convertedLeads: nat;
+   followUpLeads: nat;
+   newLeads: nat;
+   newLeadsToday: nat;
+   rejectedLeads: nat;
+   totalLeads: nat;
+   totalStudents: nat;
+ };
+type AttendeeType = 
+ variant {
+   Student;
+   Teacher;
+ };
+type AttendanceSummary = 
+ record {
+   absent: nat;
+   attendeeId: text;
+   attendeeName: text;
+   className: opt text;
+   leave: nat;
+   percentage: float64;
+   present: nat;
+   totalDays: nat;
+ };
+type AttendanceStatus = 
+ variant {
+   Absent;
+   Leave;
+   Present;
+ };
+type AttendanceRecord = 
+ record {
+   attendeeId: text;
+   attendeeName: text;
+   attendeeType: AttendeeType;
+   className: opt text;
+   createdAt: Timestamp;
+   date: text;
+   id: text;
+   markedBy: text;
+   status: AttendanceStatus;
+ };
+type AttendanceInput = 
+ record {
+   attendeeId: text;
+   attendeeName: text;
+   attendeeType: AttendeeType;
+   className: opt text;
+   date: text;
+   status: AttendanceStatus;
+ };
+service : {
+  addQuestion: (testId: text, input: QuestionInput) -> (Question);
+  assignRole: (target: principal, role: Role, name: text) -> ();
+  bootstrapSuperAdmin: (name: text) -> ();
+  bulkMarkAttendance: (inputs: vec AttendanceInput) -> (vec AttendanceRecord);
+  changePassword: (username: text, currentPassword: text, newPassword:
+   text) -> (variant {
+               err: text;
+               ok: text;
+             });
+  createFeePayment: (input: FeePaymentInput) -> (FeePayment);
+  createLead: (input: LeadInput) -> (Lead);
+  createMyTest: (title: text, className: text, subject: text,
+   durationMinutes: nat, negativeMarkingEnabled: bool) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  createResult: (input: ExamResultInput) -> (ExamResult);
+  createSalaryRecord: (input: SalaryInput) -> (SalaryRecord);
+  createStudent: (input: StudentInput) -> (Student);
+  createTeacher: (input: TeacherInput) -> (TeacherRecord);
+  createTest: (input: MockTestInput) -> (MockTest);
+  createTransaction: (input: TransactionInput) -> (Transaction);
+  deleteLead: (id: LeadId) -> (bool);
+  deleteStudent: (id: StudentId) -> (bool);
+  exportLeads: () -> (vec LeadExportRow) query;
+  filterLeadsByStatus: (status: LeadStatus) -> (vec Lead) query;
+  generateAttendanceSession: (classId: text, date: text) ->
+   (variant {
+      err: text;
+      ok: record {
+            expiresAt: int;
+            token: text;
+          };
+    });
+  generateTeacherQRCode: (classId: text, date: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  getAnnualReport: (year: nat) -> (vec MonthlyReport) query;
+  getAssignments: (classId: text) ->
+   (vec
+     record {
+       description: text;
+       dueDate: text;
+       id: nat;
+       subject: text;
+       title: text;
+       uploadedBy: text;
+     }) query;
+  getAttendance: (id: text) -> (opt AttendanceRecord) query;
+  getAttendanceSession: (token: text) -> (opt QRSession) query;
+  getAttendanceSummary: (attendeeId: text) -> (opt AttendanceSummary) query;
+  getChildAttendance: (studentId: text) -> (vec AttendanceRecord) query;
+  getChildFees: (studentId: text) -> (vec FeePayment) query;
+  getChildResults: (studentId: text) -> (vec ExamResult) query;
+  getClassAttendance: (className: text, date: text) ->
+   (vec AttendanceRecord) query;
+  getDashboardStats: () -> (DashboardStats) query;
+  getFeePayment: (id: text) -> (opt FeePayment) query;
+  getFeesByStudent: (studentId: text) -> (vec FeePayment) query;
+  getLead: (id: LeadId) -> (opt Lead) query;
+  getMonthlyReport: (month: text, year: nat) -> (MonthlyReport) query;
+  getMyAttendance: (studentId: text) -> (vec AttendanceRecord) query;
+  getMyProfile: () -> (opt UserProfile) query;
+  getMyResults: (studentId: text) -> (vec ExamResult) query;
+  getMySalarySlips: (teacherId: text) -> (vec SalaryRecord) query;
+  getMyTests: (studentId: text) -> (vec MockTest) query;
+  getParentNotices: () ->
+   (vec
+     record {
+       category: text;
+       content: text;
+       date: text;
+       id: text;
+       title: text;
+     }) query;
+  getQuestion: (id: text) -> (opt Question) query;
+  getResult: (id: text) -> (opt ExamResult) query;
+  getResultsByExam: (examName: text) -> (vec ExamResult) query;
+  getResultsByStudent: (studentId: text) -> (vec ExamResult) query;
+  getRole: (target: principal) -> (opt Role) query;
+  getSalaryByTeacher: (teacherId: text) -> (vec SalaryRecord) query;
+  getStudent: (id: StudentId) -> (opt Student) query;
+  getStudentCard: (studentId: text) -> (opt StudentCard) query;
+  getStudentNotices: () ->
+   (vec record {
+          category: text;
+          content: text;
+          date: text;
+          id: nat;
+          title: text;
+        }) query;
+  getTeacher: (id: text) -> (opt TeacherRecord) query;
+  getTest: (id: text) -> (opt MockTest) query;
+  getTestAttempts: (testId: text) -> (vec TestAttempt) query;
+  getTestLeaderboard: (testId: text) -> (vec TestAttempt) query;
+  getToppers: (examName: text, className: text) -> (vec ExamResult) query;
+  getTransaction: (id: text) -> (opt Transaction) query;
+  listAttendance: (date: opt text) -> (vec AttendanceRecord) query;
+  listFeePayments: () -> (vec FeePayment) query;
+  listLeads: () -> (vec Lead) query;
+  listPendingFees: () -> (vec FeePayment) query;
+  listQuestions: (testId: text) -> (vec Question) query;
+  listResults: () -> (vec ExamResult) query;
+  listSalaryRecords: () -> (vec SalaryRecord) query;
+  listStudentCards: () -> (vec StudentCard) query;
+  listStudents: () -> (vec Student) query;
+  listTeachers: () -> (vec TeacherRecord) query;
+  listTests: () -> (vec MockTest) query;
+  listTransactions: (txType: opt TransactionType) -> (vec Transaction) query;
+  listUsers: () -> (vec UserProfile) query;
+  markAttendance: (input: AttendanceInput) -> (AttendanceRecord);
+  markClassAttendance: (classId: text, date: text, records:
+   vec record {
+         status: text;
+         studentId: text;
+       }) -> (variant {
+                err: text;
+                ok: nat;
+              });
+  markFeePaid: (id: text, paidDate: text) -> (opt FeePayment);
+  markQRAttendance: (token: text, studentId: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  markSalaryPaid: (id: text, paidDate: text, bankDetails: opt text) ->
+   (opt SalaryRecord);
+  publishTest: (id: text) -> (opt MockTest);
+  revokeRole: (target: principal) -> ();
+  sendMessageToTeacher: (msg: text) -> (variant {
+                                          err: text;
+                                          ok: text;
+                                        });
+  submitMyTestAttempt: (testId: text, answers: vec record {
+                                                     text;
+                                                     text;
+                                                   }) ->
+   (variant {
+      err: text;
+      ok: record {
+            percentage: float64;
+            score: nat;
+            total: nat;
+          };
+    });
+  submitTestAttempt: (input: TestAttemptInput) -> (TestAttempt);
+  updateFeePayment: (id: text, input: FeePaymentInput) -> (opt FeePayment);
+  updateLead: (id: LeadId, input: LeadInput) -> (opt Lead);
+  updateResult: (id: text, input: ExamResultInput) -> (opt ExamResult);
+  updateSalaryRecord: (id: text, input: SalaryInput) -> (opt SalaryRecord);
+  updateStudent: (id: StudentId, input: StudentInput) -> (opt Student);
+  updateTeacher: (id: text, input: TeacherInput) -> (opt TeacherRecord);
+  updateTest: (id: text, input: MockTestInput) -> (opt MockTest);
+  uploadHomework: (classId: text, title: text, dueDate: text, description:
+   text) -> (variant {
+               err: text;
+               ok: text;
+             });
+  uploadMarks: (examId: text, marks:
+   vec
+    record {
+      marksObtained: nat;
+      studentId: text;
+      subject: text;
+      totalMarks: nat;
+    }) -> (variant {
+             err: text;
+             ok: nat;
+           });
+  verifyPassword: (username: text, password: text) -> (bool) query;
+}

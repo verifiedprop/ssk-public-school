@@ -1,0 +1,291 @@
+// Version: 1.0.0
+type AttendanceRecord__699091857 =
+  {
+    attendeeId : Text;
+    attendeeName : Text;
+    attendeeType : AttendeeType__693964782;
+    className : ?Text;
+    createdAt : Timestamp__301639476;
+    date : Text;
+    id : Text;
+    markedBy : Text;
+    status : AttendanceStatus__1021638340
+  };
+type AttendanceStatus__1021638340 = {#Absent; #Leave; #Present};
+type AttendeeType__693964782 = {#Student; #Teacher};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Difficulty__40882249 = {#Easy; #Hard; #Medium};
+type ExamResult__746692056 =
+  {
+    className : Text;
+    createdAt : Timestamp__301639476;
+    examName : Text;
+    grade : Grade__1028600161;
+    id : Text;
+    percentage : Float;
+    studentId : Text;
+    studentName : Text;
+    subjects : [SubjectMark__2961771];
+    totalMaximum : Nat;
+    totalObtained : Nat
+  };
+type ExpenseCategory__335271721 =
+  {#Maintenance; #Miscellaneous; #Salary; #Transport; #Utilities};
+type FeePayment__252991136 =
+  {
+    amount : Nat;
+    className : Text;
+    createdAt : Timestamp__301639476;
+    discount : Nat;
+    fine : Nat;
+    id : Text;
+    installmentNo : ?Nat;
+    netAmount : Nat;
+    paidDate : ?Text;
+    receiptNo : Text;
+    status : FeeStatus__1058318181;
+    studentId : Text;
+    studentName : Text;
+    totalInstallments : ?Nat
+  };
+type FeeStatus__1058318181 = {#Late; #Paid; #PartiallyPaid; #Pending};
+type Grade__1028600161 =
+  {#A; #APlus; #APlusPlus; #B; #BPlus; #C; #CPlus; #D; #F};
+type IncomeCategory__684181502 =
+  {#AdmissionFee; #OtherFee; #TransportFee; #TuitionFee};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type LeadId__34736079 = Nat;
+type LeadStatus__459558350 =
+  {#Contacted; #Converted; #FollowUp; #New; #Rejected};
+type Lead__650252714 =
+  {
+    assignedCounsellor : ?Principal;
+    classInterested : Text;
+    createdAt : Timestamp__301639476;
+    email : Text;
+    id : LeadId__34736079;
+    message : Text;
+    name : Text;
+    notes : Text;
+    phone : Text;
+    status : LeadStatus__459558350;
+    updatedAt : Timestamp__301639476
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type MockTest__263011376 =
+  {
+    className : Text;
+    createdAt : Timestamp__301639476;
+    durationMinutes : Nat;
+    id : Text;
+    negativeMarkingEnabled : Bool;
+    passingPercentage : Float;
+    questionIds : [Text];
+    status : TestStatus__200983394;
+    subject : Text;
+    title : Text;
+    totalMarks : Nat
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type QRSession__6160952 =
+  {active : Bool; classId : Text; date : Text; expiresAt : Int; token : Text};
+type QuestionOption__904620933 = {id : Text; text : Text};
+type Question__705387906 =
+  {
+    correctOptionId : Text;
+    difficulty : Difficulty__40882249;
+    id : Text;
+    marks : Nat;
+    negativeMarking : Bool;
+    negativePenalty : Float;
+    options : [QuestionOption__904620933];
+    text : Text
+  };
+type Role__642795420 =
+  {
+    #Accountant;
+    #AdmissionCounsellor;
+    #Parent;
+    #Principal;
+    #Student;
+    #SuperAdmin;
+    #Teacher
+  };
+type SalaryRecord__869053899 =
+  {
+    attendanceBonus : Nat;
+    bankDetails : ?Text;
+    baseSalary : Nat;
+    createdAt : Timestamp__301639476;
+    deductions : Nat;
+    id : Text;
+    month : Text;
+    netSalary : Nat;
+    paidDate : ?Text;
+    status : SalaryStatus__654079928;
+    teacherId : Text;
+    teacherName : Text;
+    year : Nat
+  };
+type SalaryStatus__654079928 = {#Paid; #Pending};
+type StudentId__775542828 = Nat;
+type Student__397068428 =
+  {
+    address : Text;
+    admissionDate : Timestamp__301639476;
+    className : Text;
+    createdAt : Timestamp__301639476;
+    dateOfBirth : Text;
+    id : StudentId__775542828;
+    isActive : Bool;
+    name : Text;
+    parentEmail : Text;
+    parentName : Text;
+    parentPhone : Text;
+    photoUrl : Text;
+    rollNumber : Text;
+    section : Text;
+    updatedAt : Timestamp__301639476
+  };
+type SubjectMark__2961771 =
+  {marksObtained : Nat; subject : Text; totalMarks : Nat};
+type TeacherRecord__1005499147 =
+  {
+    baseSalary : Nat;
+    createdAt : Timestamp__301639476;
+    dateOfJoining : Text;
+    designation : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text
+  };
+type TestAttempt__1015554243 =
+  {
+    answers : [(Text, Text)];
+    className : Text;
+    id : Text;
+    marksObtained : Float;
+    passed : Bool;
+    percentage : Float;
+    studentId : Text;
+    studentName : Text;
+    submittedAt : Timestamp__301639476;
+    testId : Text;
+    timeTaken : Nat
+  };
+type TestStatus__200983394 = {#Closed; #Draft; #Published};
+type Timestamp__301639476 = Int;
+type TransactionType__292612052 = {#Expense; #Income};
+type Transaction__367285679 =
+  {
+    amount : Nat;
+    createdAt : Timestamp__301639476;
+    date : Text;
+    description : Text;
+    expenseCategory : ?ExpenseCategory__335271721;
+    id : Text;
+    incomeCategory : ?IncomeCategory__684181502;
+    reference : ?Text;
+    txType : TransactionType__292612052
+  };
+type UserProfile__594106877 =
+  {
+    createdAt : Timestamp__301639476;
+    name : Text;
+    principal : Principal;
+    role : Role__642795420
+  };
+actor {
+  stable attCounters : {var nextAttendanceId : Nat};
+  stable attendanceRecords :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?AttendanceRecord__699091857]];
+      var elementIndex : Nat__490723111
+    };
+  stable counters : {var nextLeadId : Nat; var nextStudentId : Nat};
+  stable examResults :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ExamResult__746692056]];
+      var elementIndex : Nat__490723111
+    };
+  stable feeCounters : {var nextFeeId : Nat; var nextReceiptId : Nat};
+  stable fees :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?FeePayment__252991136]];
+      var elementIndex : Nat__490723111
+    };
+  stable financeCounters : {var nextTransactionId : Nat};
+  stable leads :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Lead__650252714]];
+      var elementIndex : Nat__490723111
+    };
+  stable mockTests :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?MockTest__263011376]];
+      var elementIndex : Nat__490723111
+    };
+  stable passwords :
+    {var root : Node__46230540<Text, Text>; var size : Nat__490723111};
+  stable qrSessions :
+    {
+      var root : Node__46230540<Text, QRSession__6160952>;
+      var size : Nat__490723111
+    };
+  stable questions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Question__705387906]];
+      var elementIndex : Nat__490723111
+    };
+  stable resultCounters : {var nextResultId : Nat};
+  stable salaryCounters : {var nextSalaryId : Nat; var nextTeacherId : Nat};
+  stable salaryRecords :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SalaryRecord__869053899]];
+      var elementIndex : Nat__490723111
+    };
+  stable students :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Student__397068428]];
+      var elementIndex : Nat__490723111
+    };
+  stable superAdmin : {var value : ?Principal};
+  stable teachers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TeacherRecord__1005499147]];
+      var elementIndex : Nat__490723111
+    };
+  stable testAttempts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TestAttempt__1015554243]];
+      var elementIndex : Nat__490723111
+    };
+  stable testCounters :
+    {var nextAttemptId : Nat; var nextQuestionId : Nat; var nextTestId : Nat};
+  stable transactions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Transaction__367285679]];
+      var elementIndex : Nat__490723111
+    };
+  stable users :
+    {
+      var root : Node__46230540<Principal, UserProfile__594106877>;
+      var size : Nat__490723111
+    }
+};

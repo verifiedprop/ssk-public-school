@@ -1,0 +1,26 @@
+{
+  "overview": "SSK Public School — a full-stack school management website and ERP dashboard with dedicated portals for parents, students, and teachers, plus QR attendance and student ID card generation.",
+  "features": [
+    "Public website with 8 pages (Blue/White/Gold branding)",
+    "Role-based login for 7 roles",
+    "Admin dashboard with student management and CRM",
+    "Fees, salary, attendance, results, mock tests, finance modules",
+    "Parent portal: attendance, fees, results, notices, teacher messaging",
+    "Student portal: mock tests, results, assignments, notices, attendance",
+    "Teacher portal: homework upload, attendance marking, marks entry, salary slips",
+    "QR code attendance scanning and generation",
+    "Student ID card generator with QR code"
+  ],
+  "category": "education",
+  "tags": [
+    "school",
+    "erp",
+    "education",
+    "portal",
+    "management",
+    "attendance",
+    "fees",
+    "results"
+  ],
+  "last_updated": "2026-05-19T06:41:42.686Z"
+}
