@@ -17,7 +17,11 @@ export const Route = createFileRoute("/student/assignments")({
 
 const statusConfig: Record<
   Assignment["status"],
-  { label: string; icon: React.ElementType; className: string }
+  {
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    className: string;
+  }
 > = {
   pending: {
     label: "Pending",

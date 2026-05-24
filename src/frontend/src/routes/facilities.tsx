@@ -125,8 +125,16 @@ function FacilitiesPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section
+        className="relative text-white py-16 px-4"
+        style={{
+          backgroundImage: "url(/assets/images/ssk-school-street.jpeg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-blue-950/60" />
+        <div className="relative max-w-4xl mx-auto text-center">
           <span className="inline-block bg-yellow-500/20 text-yellow-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wide">
             Facilities
           </span>

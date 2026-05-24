@@ -6,7 +6,6 @@ import {
   ChevronRight,
   ClipboardList,
   DollarSign,
-  GraduationCap,
   LayoutDashboard,
   Lock,
   UserPlus,
@@ -116,9 +115,11 @@ export function AdminSidebar({
       {/* Logo */}
       <div className="p-5 border-b border-primary/20">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
-            <GraduationCap className="h-5 w-5 text-foreground" />
-          </div>
+          <img
+            src="/assets/ssk-logo.png"
+            alt="SSK Public School Logo"
+            className="h-10 w-auto"
+          />
           <div>
             <div className="font-display font-bold text-sm text-white leading-tight">
               SSK Public School

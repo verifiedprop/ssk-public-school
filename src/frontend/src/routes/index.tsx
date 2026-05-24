@@ -1,3 +1,4 @@
+import { HeroSection3D } from "@/components/HeroSection3D";
 import { SchoolLayout } from "@/components/layout/SchoolLayout";
 import { SEOHead } from "@/components/ui/SEOHead";
 import { createFileRoute } from "@tanstack/react-router";
@@ -69,60 +70,7 @@ function HomePage() {
         keywords="SSK Public School, CBSE school, K-12 education, admissions 2026"
       />
 
-      {/* Hero Section */}
-      <section
-        className="relative bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white overflow-hidden"
-        data-ocid="hero.section"
-      >
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 50%, oklch(0.62 0.22 65) 0%, transparent 50%), radial-gradient(circle at 80% 20%, oklch(0.65 0.15 240) 0%, transparent 40%)",
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="inline-block bg-yellow-500 text-blue-950 text-xs font-bold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-              Admissions Open 2026-27
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-5 font-display leading-tight">
-              SSK Public School
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-200 mb-3 font-display">
-              Excellence in Education Since 2001
-            </p>
-            <p className="text-blue-300 text-lg max-w-2xl mb-10 leading-relaxed">
-              Nurturing young minds with world-class CBSE education, modern
-              infrastructure, and holistic development programmes for a bright
-              future.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/admissions"
-                className="inline-block bg-yellow-500 hover:bg-yellow-400 text-blue-950 font-bold px-8 py-3.5 rounded-xl transition-colors text-center shadow-lg"
-                data-ocid="hero.apply_button"
-              >
-                Apply Now →
-              </a>
-              <a
-                href="/about"
-                className="inline-block border-2 border-white/60 text-white hover:bg-white hover:text-blue-900 font-bold px-8 py-3.5 rounded-xl transition-colors text-center"
-                data-ocid="hero.learn_more_button"
-              >
-                Explore School
-              </a>
-              <a
-                href="#contact"
-                className="inline-block border-2 border-yellow-500/60 text-yellow-400 hover:bg-yellow-500 hover:text-blue-950 font-bold px-8 py-3.5 rounded-xl transition-colors text-center"
-                data-ocid="hero.contact_button"
-              >
-                Book Campus Visit
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection3D />
 
       {/* Stats Banner */}
       <section
@@ -170,6 +118,66 @@ function HomePage() {
                   {title}
                 </h3>
                 <p className="text-blue-700 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Campus Gallery */}
+      <section className="py-16 px-4 bg-blue-50" data-ocid="campus.section">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-bold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wide">
+              Our Campus
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-950 font-display">
+              Explore Our Campus
+            </h2>
+            <p className="text-blue-700 mt-3 max-w-xl mx-auto">
+              A nurturing environment designed for learning, growth, and
+              discovery.
+            </p>
+          </div>
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            data-ocid="campus.list"
+          >
+            {[
+              {
+                src: "/assets/images/ssk-school-entrance.jpeg",
+                alt: "School Entrance",
+              },
+              {
+                src: "/assets/images/ssk-school-gate-1.jpeg",
+                alt: "School Gate",
+              },
+              {
+                src: "/assets/images/ssk-school-gate-2.jpeg",
+                alt: "School Gate View",
+              },
+              {
+                src: "/assets/images/ssk-school-street.jpeg",
+                alt: "School Street View",
+              },
+            ].map(({ src, alt }, i) => (
+              <div
+                key={alt}
+                className="group relative overflow-hidden rounded-2xl shadow-md border border-blue-100 bg-white"
+                data-ocid={`campus.item.${i + 1}`}
+              >
+                <img
+                  src={src}
+                  alt={alt}
+                  className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white text-sm font-semibold drop-shadow">
+                    {alt}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

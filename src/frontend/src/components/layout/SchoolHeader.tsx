@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { GraduationCap, Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
@@ -47,9 +47,11 @@ export function SchoolHeader() {
               className="flex items-center gap-3 group"
               data-ocid="header.logo_link"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-xs group-hover:shadow-premium transition-smooth">
-                <GraduationCap className="h-6 w-6 text-primary-foreground" />
-              </div>
+              <img
+                src="/assets/ssk-logo.png"
+                alt="SSK Public School Logo"
+                className="h-12 w-auto"
+              />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg leading-tight text-foreground">
                   SSK Public School

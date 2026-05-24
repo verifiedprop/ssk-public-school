@@ -19,7 +19,11 @@ export const Route = createFileRoute("/student/notices")({
 
 const categoryConfig: Record<
   Notice["category"],
-  { label: string; icon: React.ElementType; className: string }
+  {
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    className: string;
+  }
 > = {
   exam: {
     label: "Exam",

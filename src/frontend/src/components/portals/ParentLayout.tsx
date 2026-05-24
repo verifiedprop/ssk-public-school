@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
   CalendarCheck,
@@ -41,6 +41,11 @@ export function ParentLayout({
   unreadMessages = 0,
 }: ParentLayoutProps) {
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    void navigate({ to: "/login" });
+  };
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -82,9 +87,11 @@ export function ParentLayout({
           className="flex items-center gap-3 px-5 py-4"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
         >
-          <div className="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center flex-shrink-0">
-            <User size={18} className="text-green-950" />
-          </div>
+          <img
+            src="/assets/ssk-logo.png"
+            alt="SSK Public School Logo"
+            className="h-10 w-auto flex-shrink-0"
+          />
           <div className="min-w-0">
             <p className="text-white font-bold text-sm leading-tight truncate">
               SSK Public School
@@ -110,8 +117,8 @@ export function ParentLayout({
           }}
         >
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center flex-shrink-0">
-              <User size={14} className="text-green-950" />
+            <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center flex-shrink-0">
+              <span className="text-amber-600 font-bold text-xs">P</span>
             </div>
             <div className="min-w-0">
               <p className="text-white text-sm font-semibold truncate">
@@ -189,7 +196,7 @@ export function ParentLayout({
           </p>
           <button
             type="button"
-            onClick={logout}
+            onClick={handleLogout}
             data-ocid="parent.logout_button"
             className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm text-white/70 hover:text-white transition-colors"
             onMouseEnter={(e) => {

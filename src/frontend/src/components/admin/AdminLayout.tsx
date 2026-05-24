@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
-import { useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { Bell, LogOut, Menu, User } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
@@ -18,6 +18,11 @@ export function AdminLayout({
   const router = useRouterState();
   const currentPath = router.location.pathname;
   const { currentUser, logout, role } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    void navigate({ to: "/login" });
+  };
 
   return (
     <div className="min-h-screen flex bg-background" data-ocid="admin.layout">
@@ -93,7 +98,7 @@ export function AdminLayout({
               </div>
               <button
                 type="button"
-                onClick={logout}
+                onClick={handleLogout}
                 className="p-1.5 rounded-md hover:bg-muted transition-colors ml-1"
                 aria-label="Logout"
                 data-ocid="admin.logout_button"

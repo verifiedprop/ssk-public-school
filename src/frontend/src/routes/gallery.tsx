@@ -10,31 +10,35 @@ type FilterTab = "All" | "Events" | "Sports" | "Academics" | "Campus";
 const galleryItems = [
   {
     id: 1,
-    category: "Events",
-    title: "Annual Day 2025",
-    desc: "Cultural performances and prize distribution",
+    category: "Campus",
+    title: "School Entrance",
+    desc: "The welcoming entrance of SSK Public School",
     color: "bg-blue-200",
+    image: "/assets/images/ssk-school-entrance.jpeg",
   },
   {
     id: 2,
-    category: "Sports",
-    title: "Cricket Champions",
-    desc: "District-level cricket championship winners",
+    category: "Campus",
+    title: "School Main Gate",
+    desc: "Grand main gate with CBSE affiliation signage",
     color: "bg-yellow-200",
+    image: "/assets/images/ssk-school-gate-1.jpeg",
   },
   {
     id: 3,
-    category: "Academics",
-    title: "Science Fair",
-    desc: "Student science projects exhibition",
+    category: "Campus",
+    title: "School Gate - Vision & Mission",
+    desc: "School gate showcasing our vision and mission",
     color: "bg-green-200",
+    image: "/assets/images/ssk-school-gate-2.jpeg",
   },
   {
     id: 4,
     category: "Campus",
-    title: "School Building",
-    desc: "Our modern 5-acre campus",
+    title: "Campus Overview",
+    desc: "Street view of our beautiful campus",
     color: "bg-indigo-200",
+    image: "/assets/images/ssk-school-street.jpeg",
   },
   {
     id: 5,
@@ -164,22 +168,30 @@ function GalleryPage() {
                 className="group rounded-2xl overflow-hidden border border-blue-100 shadow-sm hover:shadow-lg transition-shadow"
                 data-ocid={`gallery.item.${i + 1}`}
               >
-                <div
-                  className={`${item.color} aspect-square flex flex-col items-center justify-center relative`}
-                >
-                  <span className="text-4xl mb-2">
-                    {item.category === "Events"
-                      ? "🎉"
-                      : item.category === "Sports"
-                        ? "🏆"
-                        : item.category === "Academics"
-                          ? "📚"
-                          : "🏫"}
-                  </span>
-                  <span className="text-xs font-bold text-blue-900 opacity-60">
-                    {item.category}
-                  </span>
-                </div>
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                  />
+                ) : (
+                  <div
+                    className={`${item.color} aspect-square flex flex-col items-center justify-center relative`}
+                  >
+                    <span className="text-4xl mb-2">
+                      {item.category === "Events"
+                        ? "🎉"
+                        : item.category === "Sports"
+                          ? "🏆"
+                          : item.category === "Academics"
+                            ? "📚"
+                            : "🏫"}
+                    </span>
+                    <span className="text-xs font-bold text-blue-900 opacity-60">
+                      {item.category}
+                    </span>
+                  </div>
+                )}
                 <div className="p-3 bg-white">
                   <h3 className="font-bold text-blue-900 text-sm">
                     {item.title}

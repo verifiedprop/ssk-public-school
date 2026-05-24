@@ -46,7 +46,7 @@ function TeacherSidebar({
 
   const handleLogout = () => {
     logout();
-    void navigate({ to: "/login" as never });
+    void navigate({ to: "/login" });
   };
 
   return (
@@ -61,9 +61,11 @@ function TeacherSidebar({
         style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center">
-            <GraduationCap className="h-5 w-5 text-blue-950" />
-          </div>
+          <img
+            src="/assets/ssk-logo.png"
+            alt="SSK Public School Logo"
+            className="h-10 w-auto"
+          />
           <div>
             <div className="font-bold text-sm text-white leading-tight">
               SSK Public School
@@ -223,12 +225,11 @@ export default function TeacherLayout({
           >
             <Menu className="h-5 w-5" />
           </button>
-          <div
-            className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
-            style={{ backgroundColor: "#1e3a8a" }}
-          >
-            <GraduationCap className="h-4 w-4 text-white" />
-          </div>
+          <img
+            src="/assets/ssk-logo.png"
+            alt="SSK Public School Logo"
+            className="h-7 w-auto flex-shrink-0"
+          />
           <h1 className="font-bold text-lg text-foreground">{title}</h1>
         </header>
         <main className="flex-1 p-4 sm:p-6 overflow-auto">{children}</main>

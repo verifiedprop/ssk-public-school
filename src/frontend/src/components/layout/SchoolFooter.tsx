@@ -1,6 +1,5 @@
 import {
   Facebook,
-  GraduationCap,
   Instagram,
   Mail,
   MapPin,
@@ -48,9 +47,11 @@ export function SchoolFooter() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-                <GraduationCap className="h-6 w-6 text-foreground" />
-              </div>
+              <img
+                src="/assets/ssk-logo.png"
+                alt="SSK Public School Logo"
+                className="h-10 w-auto"
+              />
               <div>
                 <div className="font-display font-bold text-lg text-secondary-foreground leading-tight">
                   SSK Public School
